@@ -5,7 +5,7 @@ import requests
 def get_my_choices():
     url = 'https://dev57502.service-now.com/api/now/table/sys_db_object?sysparm_query=super_class%3D2251f145112023006517efa30493a244'
     user = 'admin'
-    pwd = 'Fumaca@01'
+    pwd = ''
     headers = {"Content-Type":"application/json","Accept":"application/json"}
     response = requests.get(url, auth=(user, pwd), headers=headers )
 
@@ -16,14 +16,13 @@ def get_my_choices():
     data = response.json()
 
     choices = data['result']
-    
-    for i in choices:
-        resultado = i['name']
 
-    print(resultado)
-    
-    
-    return str(resultado)
+    users = []
+    for key  in choices:
+        users.append(str(key['name']))
+   
+    print(users)
+    return users
 
 class MyForm(forms.Form):
     my_choice_field = forms.ChoiceField(choices=get_my_choices())
