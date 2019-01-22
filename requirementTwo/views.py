@@ -5,14 +5,13 @@ import json
   
 def get_name(request):
     if(request.POST):
+        
         dados = request.POST.dict()
         tables = dados.get("tables")
         short_description = dados.get("short_description")
         description = dados.get("description")
         url = 'https://dev57502.service-now.com/api/now/table/'+str(tables)
-        print(url)
-        print(description)
-
+       
         obj= {
 
             'description':description,
@@ -21,17 +20,12 @@ def get_name(request):
         }
 
         objs = json.dumps(obj)
-
-        print(objs)
-
-        user = 'admin'
-        pwd = 'Fumaca@01'
+        user = 'fujitsu.integration'
+        pwd = 'fujitsu123'
 
         headers = {"Content-Type":"application/json","Accept":"application/json"}
 
         response = requests.post(url, auth=(user, pwd), headers=headers,data=objs)
-
-        print(response)
 
         if response.status_code != 200: 
             print('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
@@ -47,15 +41,15 @@ def get_name(request):
 
 def update_record(request):
     if(request.POST):
-        dados = request.POST.dict()
-        tables = dados.get("table")
-        comments = dados.get("comments")
-        ids = dados.get("id")
+
+        tables = request.POST.get("table")
+        comments = request.POST.get("comments")
+        ids = request.POST.get("id")
+        numbers = request.POST.get("number")
+        print(numbers)
 
         url = 'https://dev57502.service-now.com/api/now/table/'+str(tables)+'/'+str(ids)
-        print(url)
         
-
         obj= {
 
             'work_notes':comments,
@@ -63,11 +57,8 @@ def update_record(request):
         }
 
         objs = json.dumps(obj)
-
-        print("obj segunda view" + objs)
-
-        user = 'admin'
-        pwd = 'Fumaca@01'
+        user = 'fujitsu.integration'
+        pwd = 'fujitsu123' 
 
         headers = {"Content-Type":"application/json","Accept":"application/json"}
 
@@ -78,12 +69,9 @@ def update_record(request):
         if response.status_code != 200: 
             print('Status:', response.status_code, 'Headers:', response.headers, 'Error Response:',response.json())
             data = response.json()
-            exit()
-            
-        return render(request, 'updated.html', {'data': data})
+            print(data)            
+        return render(request, 'updated.html')
     else:
         
-        return render(request, 'test.html',{'form': forms})
+        return render(request, 'record.html')
     
-
-

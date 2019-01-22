@@ -6,12 +6,13 @@
 
 <form action="/updated/" method="post">{% csrf_token %}
     <div class="form-group">
+        <p>POST successfully created, update the call by adding a comment (PUT) </p>
       <label for="disabledInput">Number created</label>
-      <input type="text" class="form-control" id="disabledInput" placeholder="name@example.com" value={{data.result.number}} disabled>
+      <input type="text" name="number" class="form-control" placeholder="name@example.com" value={{data.result.number}} readonly>
     </div>
     <a href="https://dev57502.service-now.com/{{data.result.sys_class_name}}.do?sys_id={{data.result.sys_id}} " target="_blank"> See on Servicenow </a>
-    <input type="text" name="id" class="invisible" id="disabledInput"  value={{data.result.sys_id}} disabled>
-    <input type="text" name="table" class="invisible" id="disabledInput"  value={{data.result.sys_class_name}} disabled>
+    <input type="hidden" name="id" value={{data.result.sys_id}} >
+    <input type="hidden" type="text" name="table" value={{data.result.sys_class_name}} >
     
     <div class="form-group">
       <label for="exampleFormControlTextarea1" >Comments:</label>
@@ -23,3 +24,4 @@
 </div> 
 
 
+<!-- class=invisible-->
