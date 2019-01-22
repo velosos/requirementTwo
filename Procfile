@@ -1,1 +1,1 @@
-web: gunicorn fujtsuProj.fujtsuProj.wsgi
+web: gunicorn fujtsuProj.wsgi
