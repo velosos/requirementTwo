@@ -30,6 +30,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost','.herokuapp']
 
 
+TEMPLATE_DIRS = [
+    os.path.join(BASE_DIR, 'templates'),
+    ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -118,8 +121,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-PROJECT_DIR = os.path.dirname(__file__) #for heroku
-os.path.join(PROJECT_DIR, 'templates'),
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
