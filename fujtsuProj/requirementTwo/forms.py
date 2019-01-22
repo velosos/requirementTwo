@@ -2,10 +2,10 @@ from django import forms
 import requests
 
 
-def get_my_choices():
+def get_tables():
     url = 'https://dev57502.service-now.com/api/now/table/sys_db_object?sysparm_query=super_class%3D2251f145112023006517efa30493a244'
     user = 'admin'
-    pwd = ''
+    pwd = 'Fumaca@01'
     headers = {"Content-Type":"application/json","Accept":"application/json"}
     response = requests.get(url, auth=(user, pwd), headers=headers )
 
@@ -17,12 +17,18 @@ def get_my_choices():
 
     choices = data['result']
 
-    users = []
-    for key  in choices:
-        users.append(str(key['name']))
-   
-    print(users)
-    return users
+    tables = []
+    for key in choices:
+        sys_name = str(key['sys_name'])
+        name = str(key['name'])
+        tables.append((name,sys_name))
+        
+    return tables
 
 class MyForm(forms.Form):
-    my_choice_field = forms.ChoiceField(choices=get_my_choices())
+    tables = forms.ChoiceField(label='Choose the table',choices=get_tables())
+    short_description = forms.CharField(label='Short Description', max_length=100)
+    description = forms.CharField(widget=forms.Textarea)
+
+class Update(forms.Form):
+    comments = forms.CharField(widget=forms.Textarea)    

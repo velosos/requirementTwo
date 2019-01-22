@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> 
+{% load bootstrap %}
+
+
+<div class="container"> 
+
+<form action="/updated/" method="post">{% csrf_token %}
+    <div class="form-group">
+      <label for="disabledInput">Number created</label>
+      <input type="text" class="form-control" id="disabledInput" placeholder="name@example.com" value={{data.result.number}} disabled>
+    </div>
+    <a href="https://dev57502.service-now.com/{{data.result.sys_class_name}}.do?sys_id={{data.result.sys_id}} " target="_blank"> See on Servicenow </a>
+    <input type="text" name="id" class="invisible" id="disabledInput"  value={{data.result.sys_id}} disabled>
+    <input type="text" name="table" class="invisible" id="disabledInput"  value={{data.result.sys_class_name}} disabled>
+    
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1" >Comments:</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" name="comments" rows="3"></textarea>
+    </div>
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+</div> 
+
+

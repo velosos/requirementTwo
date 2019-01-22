@@ -3,45 +3,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="static/fujtsu.js"></script>
 
-<style>
 
-.hide{
+{% load bootstrap %}
 
-display: none;
 
-}
 
-</style>
- 
- <div class="form-group">
-        <div class="container"> 
-                <div class="form-group">
-                       <!-- <form action="/" method="post">
-                            {% csrf_token %}
-                   <label for="sel1">Select list:</label>
-                   <select class="form-control" name"table" id="sel1" onchange="myFunction()">
-                       
-                     <option>none</option>  
-                     {% for i in obj %}
-                     <option>{{i.name}}</option>
-                       {% endfor %}
-                   </select>
-                 </div>
+<div class="container"> 
 
-                 <div class="hide" id="hide"> 
-                 <label for="short">Short Description:</label>
-                 <textarea class="form-control" rows="2" id="short" name="short" ></textarea>
-                
-    <label for="comment">Description:</label>
-    <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
-    <br>
-    <button type="submit" class="btn btn-danger">Submit</button>
-  </div>
-</form> -->
+<p><h2> Create a new record in ServiceNow </h1>   </p>
+  <div class="form-group">
+                 
+<form action="/created/" method="post">{% csrf_token %}
 
-<form action="/created/" method="post">
-    {% csrf_token %}
-    {{ form.as_p}}
+  
+ {{ form|bootstrap }}
+                         
+    
     <input type="submit" value="Submit">
 </form>
 
@@ -49,3 +26,7 @@ display: none;
 </div>
 
 
+
+
+
+   

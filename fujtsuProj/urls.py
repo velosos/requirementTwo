@@ -20,5 +20,7 @@ from fujtsuProj.requirementTwo import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', views.get_name, name='get_name'),
-    url(r'^created/', views.create, name="create"),
+    url(r'^index/$', views.update_record, name='update_record'),
+    
+    
 ]
