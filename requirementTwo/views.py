@@ -20,8 +20,8 @@ def get_name(request):
         }
 
         objs = json.dumps(obj)
-        user = 'fujitsu.integration'
-        pwd = 'fujitsu123'
+        user = ''
+        pwd = ''
 
         headers = {"Content-Type":"application/json","Accept":"application/json"}
 
@@ -57,8 +57,8 @@ def update_record(request):
         }
 
         objs = json.dumps(obj)
-        user = 'fujitsu.integration'
-        pwd = 'fujitsu123' 
+        user = ''
+        pwd = '' 
 
         headers = {"Content-Type":"application/json","Accept":"application/json"}
 

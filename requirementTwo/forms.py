@@ -4,8 +4,8 @@ import requests
 
 def get_tables():
     url = 'https://dev57502.service-now.com/api/now/table/sys_db_object?sysparm_query=super_class%3D2251f145112023006517efa30493a244'
-    user = 'fujitsu.integration'
-    pwd = 'fujitsu123'
+    user = ''
+    pwd = ''
     headers = {"Content-Type":"application/json","Accept":"application/json"}
     response = requests.get(url, auth=(user, pwd), headers=headers )
 
