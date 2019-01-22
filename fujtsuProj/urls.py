@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from fujtsuProj.requirementTwo import views
+from requirementTwo import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
