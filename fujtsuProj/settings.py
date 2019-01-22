@@ -29,10 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','.herokuapp']
 
-
-TEMPLATE_DIRS = [
-    os.path.join(BASE_DIR, 'templates'),
-    ]
 # Application definition
 
 INSTALLED_APPS = [
@@ -62,7 +58,7 @@ ROOT_URLCONF = 'fujtsuProj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
